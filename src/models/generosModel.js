@@ -2,21 +2,19 @@ var database = require("../database/config");
 
 function listar() {
     
-/*     SELECT * FROM genero; */
-
     var instrucaoSql = `
-
-        
+        SELECT 
+            * 
+        FROM genero;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-function cadastrar(nome_genero) {
-    /* INSERT INTO genero (nome) VALUES ('${nome}'); */
-
+function cadastrar(nome) {
+    
     var instrucaoSql = `
-        INSERT INTO genero (nome_genero) VALUES ('${nome_genero}');
+        INSERT INTO genero (nome) VALUES ('${nome}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

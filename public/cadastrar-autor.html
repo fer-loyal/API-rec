@@ -89,7 +89,7 @@
                             <label>
                                 Nome:
                                 <br>
-                                <input name="autor" id="autor" maxlength="100" type="text">
+                                <input name="nome" id="nome" maxlength="100" type="text">
                             </label>
                             <br>
 
@@ -115,24 +115,29 @@
         document.getElementById("form_postagem").reset();
     }
 
-
     function cadastrar() {
+
         var corpo = {
-            autor: form_postagem.autor.value
-        }
+            nome: form_postagem.nome.value
+        };
 
-        let caracteresProibidos = ["0","1","2","3","4","5","6","7","8","9","!","@","#","$","%","&" ,"*", "(" , ")", "<", ">", "?"];
+        let caracteresProibidos = ["0","1","2","3","4","5","6","7","8","9","!","@","#","$","%","&" ,"*", "(" , ")", "<", ">", "?" , "+", "="];
 
-        for ( let i = 0 ; i < corpo.length ; i++ ) {
+        for ( let i = 0 ; i < corpo.nome.length ; i++ ) {
 
-            if ( corpo.includes(caracteresProibidos) ) {
-                alert ('Nome inválido! Caracteres numéricos/especiais são inválidos')
-            }
-        }
+            for ( let j = 0 ; j < caracteresProibidos.length ; j++ ) {
+                
+                if ( corpo.nome[i] == caracteresProibidos[j] ) {
+                    console.log("Encontrei um caractere proibido!")
 
-        
+                alert ('Nome inválido! Caracteres numéricos/especiais são inválidos');
+                limparFormulario();
+                return false;
+                }
 
-        fetch(`/autores/cadastrar`, {
+                else {
+
+                fetch(`/autores/cadastrar`, {
             method: "post",
             headers: {
                 "Content-Type": "application/json"
@@ -158,8 +163,10 @@
         });
 
         return false;
+            }
+        }
 
+            }
     }
-
 
 </script>

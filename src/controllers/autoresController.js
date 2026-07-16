@@ -15,12 +15,12 @@ function listar(req, res) {
 }
 
 function cadastrar(req, res) {
-    var autor = req.body.autor;
+    var nome = req.body.nome;
 
-    if (autor == undefined) {
+    if (nome == undefined) {
         res.status(400).send("O título está indefinido!");
     } else {
-        autoresModel.cadastrar(autor)
+        autoresModel.cadastrar(nome)
             .then(
                 function (resultado) {
                     res.json(resultado);

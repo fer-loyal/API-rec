@@ -1,23 +1,20 @@
 var database = require("../database/config");
 
 function listar() {
-
-    /*  SELECT * FROM autor; */
-
+    
     var instrucaoSql = `
-       SELECT * FROM livro WHERE autor like '${autor}';
+        SELECT 
+            * 
+        FROM autor;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-function cadastrar(autor) {
+function cadastrar(nome) {
     
-    /* INSERT INTO autor (nome) VALUES ('${nome}'); */
-    /* troquei tudo oq era 'nome' para autor */
-
     var instrucaoSql = `
-        INSERT INTO livro (autor) VALUES ('${autor}');
+        INSERT INTO autor (nome) VALUES ('${nome}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

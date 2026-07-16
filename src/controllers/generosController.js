@@ -15,12 +15,12 @@ function listar(req, res) {
 }
 
 function cadastrar(req, res) {
-    var nome_genero = req.body.nome_genero;
+    var nome = req.body.nome;
 
-    if (nome_genero == undefined) {
+    if (nome == undefined) {
         res.status(400).send("O título está indefinido!");
     } else {
-        generosModel.cadastrar(nome_genero)
+        generosModel.cadastrar(nome)
             .then(
                 function (resultado) {
                     res.json(resultado);

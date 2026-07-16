@@ -91,7 +91,7 @@
                             <label>
                                 Nome:
                                 <br>
-                                <input name="nome_genero" id="nome_genero" maxlength="100" type="text">
+                                <input name="nome" id="nome" maxlength="100" type="text">
                             </label>
                             
 
@@ -120,7 +120,7 @@
     function cadastrar() {
 
         var corpo = {
-            nome_genero: form_postagem.nome_genero.value
+            nome: form_postagem.nome.value
         }
 
         fetch(`/generos/cadastrar`, {
